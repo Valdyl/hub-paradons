@@ -38,8 +38,8 @@ onMounted(()=>{
       </a>
       <iframe 
         class="iframe-twitch" 
-        muted=true 
-        src="https://clips.twitch.tv/embed?clip=AbstruseJollyGalagoMVGame-5wSyiJ95ytMzDWLS&parent=localhost&parent=valdyl.github.io" 
+        muted=false 
+        src="https://clips.twitch.tv/embed?clip=AbstruseJollyGalagoMVGame-5wSyiJ95ytMzDWLS&parent=localhost&parent=valdyl.github.io&muted=false" 
         frameborder="0"
       ></iframe>
       <div class="container"> 
@@ -90,7 +90,7 @@ onMounted(()=>{
   }
   &.noyau{
     top:10%;
-    width: 33vw;
+    width: round(33vw);
     filter: drop-shadow(0px 0px .5rem #019de7);
     animation: animationLogo 5s alternate infinite;
   }
@@ -98,15 +98,22 @@ onMounted(()=>{
 
 .iframe-twitch{
     position:absolute;
-    width:600px;
+    width:35vw;
     aspect-ratio: 16/9;
     top:5%;
-    left:35%;
+    // left:35%;
     z-index: 10;
     display: none;
     transition: opacity 300ms ease;
-    opacity:0;
 }
+.iframe-twitch:hover{
+  & + .container{
+    animation-play-state: paused;
+  }
+
+
+}
+
 
 @keyframes rotationCaroussel{
   from {

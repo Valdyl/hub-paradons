@@ -4,49 +4,23 @@ import axios from "axios";
 
 const urlIframelast = ref('')
 const urlIframeMost = ref('')
+const urlIframeUsed = ref('')
 
 const props = defineProps({
     dataStreamer: Object,
 })
 
 const showFrame = ()=>{
-    // document.querySelector('.logo').style.display ='none'
-    // document.querySelector('.iframe-twitch').style.display ='block'
-  if(urlIframelast.value){
-  document.querySelector('.iframe-twitch').src= urlIframelast.value+'&parent=localhost&parent=valdyl.github.io&autoplay=true&controls=false'
-  }else{
-    document.querySelector('.iframe-twitch').src= urlIframeMost.value+'&parent=localhost&parent=valdyl.github.io&autoplay=true&controls=false'
-  }
-  document.querySelector('.logo').style.opacity ='0'
-
-  setTimeout(()=>{
-    document.querySelector('.logo').style.display ='none'
-    document.querySelector('.iframe-twitch').style.display ='block'
-
-  },300)
-    setTimeout(()=>{
-    document.querySelector('.iframe-twitch').style.opacity ='1'
-  },500)
-  
-
+  document.querySelector('.logo').style.display ='none'
+  document.querySelector('.iframe-twitch').style.display ='block'
+  urlIframelast.value ? urlIframeUsed.value = urlIframelast.value : urlIframeUsed.value = urlIframeMost.value 
+  document.querySelector('.iframe-twitch').src= urlIframeUsed.value+'&parent=localhost&parent=valdyl.github.io&autoplay=true&controls=false&muted=false'
 }
 
 const showLogo = ()=>{
-  // document.querySelector('.iframe-twitch').style.display ='none'
-  // document.querySelector('.logo').style.display ='block'
-
-  document.querySelector('.iframe-twitch').style.opacity ='0'
-
-  setTimeout(()=>{
-    document.querySelector('.logo').style.display ='block'
-    document.querySelector('.iframe-twitch').style.display ='none'
-
-  },300)
-    setTimeout(()=>{
-      document.querySelector('.logo').style.opacity ='1'
-  },500)
-      document.querySelector('.iframe-twitch').src= 'https://clips.twitch.tv/'
-
+  document.querySelector('.iframe-twitch').style.display ='none'
+  document.querySelector('.logo').style.display ='block'
+  document.querySelector('.iframe-twitch').src= 'https://clips.twitch.tv/'
 }
 
 onBeforeMount(()=>{
@@ -72,14 +46,10 @@ onBeforeMount(()=>{
     })
 })
 
-onMounted(()=>{
-// console.log(props.dataStreamer)
-
-})
 </script>
 
 <template>
-  <div   class="item top" @mouseover="showFrame" @mouseout="showLogo">
+  <div class="item top" @mouseenter="showFrame" @mouseleave="showLogo">
     <div class="item__inner">
       <a target="_blank" :href="props.dataStreamer.urlTwitch">
         <h2>{{ props.dataStreamer.name.charAt(0).toUpperCase() + props.dataStreamer.name.slice(1) }}</h2>
