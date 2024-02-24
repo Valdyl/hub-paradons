@@ -1,0 +1,78 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: paradons;
+  src: url(assets/fonts/edo.ttf);
+}
+@font-face {
+  font-family: heavitas;
+  src: url(assets/fonts/heavitas.ttf);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: white;
+  /* filter:drop-shadow(-5px 5px 0px rgb(0,0,0)); */
+  text-decoration: inherit;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: heavitas, sans-serif;
+  background: linear-gradient(
+    #000000 40%,
+    #000055 80%,
+    #019de7 120%
+  ); 
+  /* background: radial-gradient(
+    #18b5fe, 
+    #000055,
+    #000000
+  );
+  background-position: center;
+  background-size: 100% 150%; */
+
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+  width:100%;
+  height:100vh;
+}
