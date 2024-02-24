@@ -52,7 +52,8 @@ const showLogo = ()=>{
 onBeforeMount(()=>{
   axios.get(`https://api.twitch.tv/helix/clips?broadcaster_id=${props.dataStreamer.id}&started_at=2024-02-23T20:00:00Z&end_at=2024-02-26T20:00:00Z&first=1`,{
     headers:{
-
+        'Authorization': 'Bearer ' + import.meta.env.VITE_AUTH_TOKEN,
+        'Client-Id': import.meta.env.VITE_CLIENT_ID
     }
   })
     .then(async (responseRecent) => {
@@ -61,7 +62,8 @@ onBeforeMount(()=>{
 
         axios.get(`https://api.twitch.tv/helix/clips?broadcaster_id=${props.dataStreamer.id}&first=1`,{
           headers:{
-
+            'Authorization': 'Bearer ' + import.meta.env.VITE_AUTH_TOKEN,
+            'Client-Id': import.meta.env.VITE_CLIENT_ID
           }
         })
         .then(async (responsePopular) => {
