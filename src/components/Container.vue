@@ -33,22 +33,28 @@ onMounted(()=>{
 <template>
     <div class="extra">
       <!-- <img  src="@/assets/img/logo.gif"/> -->
-      <a href="https://paradons.fr" class="noyau logo" target="_blank">
-        <img  class="logo noyau" src="https://valdyl.github.io/paradons-hub/assets/logo.png"/>
+      <a href="https://paradons.fr" class="noyau" target="_blank">
+        <div class="logo-infos">
+          <img  class="logo" src="https://valdyl.github.io/paradons-hub/assets/logo.png"/>
+          <h1>56.137 €</h1>
+        </div>
+        <video id="iframe-twitch" autoplay="true" muted="false">
+        </video>
       </a>
-      <iframe 
+      <!-- <iframe 
         class="iframe-twitch" 
         muted=false 
         src="https://clips.twitch.tv/embed?clip=AbstruseJollyGalagoMVGame-5wSyiJ95ytMzDWLS&parent=localhost&parent=valdyl.github.io&muted=false" 
         frameborder="0"
-      ></iframe>
+      ></iframe> -->
+        <!-- <source src="@/assets/vids/doigt.mp4" type="video/mp4" auto/> -->
       <div class="container"> 
         <Item 
           v-for="(streamer,index) in data" 
           :key="streamer.name"
           :id="index"
           :dataStreamer="streamer"
-        />      
+        />     
       </div>
     </div>
 </template>
@@ -79,32 +85,46 @@ onMounted(()=>{
   }
 }
 
-.logo{
-  position:absolute;
-  width:400px;
-  top:10%;
-  left:25%;
-  transition: opacity 300ms ease;
-  img{
-    width: 100%;
-  }
-  &.noyau{
+.noyau{
     top:10%;
-    width: round(33vw);
-    filter: drop-shadow(0px 0px .5rem #019de7);
+    width: round(35vw);
+    display: grid;
+    place-items: center;
+    left:33%;
+    position: absolute;
     animation: animationLogo 5s alternate infinite;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    // border-radius: 1rem;
+    // border: 1px solid rgba(149, 153, 234, 0.3);
+    opacity: .8;
+}
+
+.logo-infos{
+  position:relative;
+  width:86%;
+  top: -2%;
+  transition: opacity 300ms ease;
+  filter: drop-shadow(0px 0px .5rem #019de7);
+  img{
+    margin-bottom: 2rem;
+  }
+  h1{
+    font-size: 4rem;
   }
 }
 
-.iframe-twitch{
+#iframe-twitch{
     position:absolute;
-    width:35vw;
+    width:100%;
     aspect-ratio: 16/9;
-    top:5%;
-    // left:35%;
+    top:0;
+    left: 0;
     z-index: 10;
     display: none;
     transition: opacity 300ms ease;
+
 }
 .iframe-twitch:hover{
   & + .container{
@@ -114,6 +134,30 @@ onMounted(()=>{
 
 }
 
+
+.shown{
+  .logo-infos{
+    display: none;
+  }
+  #iframe-twitch{
+    display: block;
+  }
+
+  &:after{
+        content:'';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+         border-radius: 1rem;
+        background: linear-gradient(rgba(1, 157, 231,0.2) 0 2px,rgba(149, 153, 234, 0.1) 2px 4px);
+        background-size: 100% 4px;
+        animation: gradientAnimation 30s linear infinite;
+        z-index: 100;
+    }
+}
 
 @keyframes rotationCaroussel{
   from {

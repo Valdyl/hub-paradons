@@ -11,40 +11,26 @@ const props = defineProps({
 })
 
 const showFrame = ()=>{
-  document.querySelector('.logo').style.display ='none'
-  document.querySelector('.iframe-twitch').style.display ='block'
-  urlIframelast.value ? urlIframeUsed.value = urlIframelast.value : urlIframeUsed.value = urlIframeMost.value 
-  document.querySelector('.iframe-twitch').src= urlIframeUsed.value+'&parent=localhost&parent=valdyl.github.io&autoplay=true&controls=false&muted=false'
+  // document.querySelector('.logo-infos').style.display ='none'
+  // document.querySelector('#iframe-twitch').style.display ='block'
+
+  document.querySelector('.noyau').classList.toggle('shown')
+
+
+  document.querySelector('#iframe-twitch').src=`https://valdyl.github.io/paradons-hub/assets/${props.dataStreamer.name}.mp4`
+  document.querySelector('#iframe-twitch').load();
 }
 
 const showLogo = ()=>{
-  document.querySelector('.iframe-twitch').style.display ='none'
-  document.querySelector('.logo').style.display ='block'
-  document.querySelector('.iframe-twitch').src= 'https://clips.twitch.tv/'
+  document.querySelector('.noyau').classList.toggle('shown')
+
+  // document.querySelector('#iframe-twitch').style.display ='none'
+  // document.querySelector('.logo-infos').style.display ='block'
+
+  document.querySelector('#iframe-twitch').src=``
+
+
 }
-
-onBeforeMount(()=>{
-  axios.get(`https://api.twitch.tv/helix/clips?broadcaster_id=${props.dataStreamer.id}&started_at=2024-02-23T20:00:00Z&end_at=2024-02-26T20:00:00Z&first=1`,{
-    headers:{
-        'Authorization': 'Bearer ' + import.meta.env.VITE_AUTH_TOKEN,
-        'Client-Id': import.meta.env.VITE_CLIENT_ID
-    }
-  })
-    .then(async (responseRecent) => {
-        
-        responseRecent.data.data[0] ? urlIframelast.value =  responseRecent.data.data[0].embed_url : ''
-
-        axios.get(`https://api.twitch.tv/helix/clips?broadcaster_id=${props.dataStreamer.id}&first=1`,{
-          headers:{
-            'Authorization': 'Bearer ' + import.meta.env.VITE_AUTH_TOKEN,
-            'Client-Id': import.meta.env.VITE_CLIENT_ID
-          }
-        })
-        .then(async (responsePopular) => {
-          urlIframeMost.value = responsePopular.data.data[0].embed_url
-        })
-    })
-})
 
 </script>
 
