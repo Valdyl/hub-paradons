@@ -108,10 +108,10 @@ onMounted(()=>{
   transition: opacity 300ms ease;
   filter: drop-shadow(0px 0px .5rem #019de7);
   img{
-    margin-bottom: 2rem;
+    margin-bottom: 1.75vw;
   }
   h1{
-    font-size: 4rem;
+    font-size: 3.5vw;
   }
 }
 
@@ -122,6 +122,7 @@ onMounted(()=>{
     top:0;
     left: 0;
     z-index: 10;
+    border-radius: 1rem;
     display: none;
     transition: opacity 300ms ease;
 
