@@ -17,7 +17,7 @@ const showFrame = ()=>{
   document.querySelector('.noyau').classList.toggle('shown')
 
 
-  document.querySelector('#iframe-twitch').src=`https://valdyl.github.io/paradons-hub/assets/${props.dataStreamer.name}.mp4`
+  document.querySelector('#iframe-twitch').src=`https://valdyl.github.io/assets-codepen/assets/${props.dataStreamer.name}.mp4`
   document.querySelector('#iframe-twitch').load();
 }
 
@@ -39,7 +39,7 @@ const showLogo = ()=>{
     <div class="item__inner">
       <a target="_blank" :href="props.dataStreamer.urlTwitch">
         <h2>{{ props.dataStreamer.name.charAt(0).toUpperCase() + props.dataStreamer.name.slice(1) }}</h2>
-        <img :src="`https://valdyl.github.io/paradons-hub/assets/${props.dataStreamer.name}.png`" :alt="props.dataStreamer.name">
+        <img :src="`https://valdyl.github.io/assets-codepen/assets/${props.dataStreamer.name}.png`" :alt="props.dataStreamer.name">
       </a>          
       <div class="social">
         <!-- <a v-if="props.dataStreamer.donationGoal" target='blank' :href="props.dataStreamer.donationGoal"><i class="fa-solid fa-list-ul"></i></a> -->

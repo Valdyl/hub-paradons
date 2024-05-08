@@ -35,7 +35,7 @@ onMounted(()=>{
       <!-- <img  src="@/assets/img/logo.gif"/> -->
       <a href="https://paradons.fr" class="noyau" target="_blank">
         <div class="logo-infos">
-          <img  class="logo" src="https://valdyl.github.io/paradons-hub/assets/logo.png"/>
+          <img  class="logo" src="https://valdyl.github.io/assets-codepen/assets/logo.png"/>
           <h1>56.137 €</h1>
         </div>
         <video id="iframe-twitch" autoplay="true" muted="false">
